@@ -4,6 +4,7 @@ namespace NarrativeProject.Rooms
 {
     internal class Bathroom : Room
     {
+        bool isBathUsed = false;
 
         internal override string CreateDescription() =>
 @"In your bathroom, the [bath] is filled with hot water.
@@ -16,10 +17,18 @@ You can return to your [bedroom].
             switch (choice)
             {
                 case "bath":
+                    isBathUsed = true;
                     Console.WriteLine("You relax in the bath.");
                     break;
                 case "mirror":
-                    Console.WriteLine("You see the numbers 2024 written on the fog on your mirror.");
+                    if (isBathUsed)
+                    {
+                        Console.WriteLine("You see the numbers 2024 written on the fog on your mirror.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You cannot see anything of interest in the mirror.");
+                    }
                     break;
                 case "bedroom":
                     Console.WriteLine("You return to your bedroom.");
