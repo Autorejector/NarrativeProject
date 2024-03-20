@@ -20,7 +20,7 @@ You can return to your [bedroom].
                     Console.WriteLine("You return to your bedroom.");
                     Game.Transition<Bedroom>();
                     break;
-                case "2314":
+                case "2024":
                     Console.WriteLine("The chest opens and you get a key.");
                     isKeyCollected = true;
                     break;
