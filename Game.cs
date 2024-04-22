@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NarrativeProject
 {
     internal class Game
     {
-        List<Room> rooms = new List<Room>();
-        Room currentRoom;
+        private int playerHealth = 100; // Player's health
+        private List<Room> rooms = new List<Room>();
+        private Room currentRoom;
+        private bool isFinished;
+        private string nextRoom = "";
+
         internal bool IsGameOver() => isFinished;
-        static bool isFinished;
-        static string nextRoom = "";
 
         internal void Add(Room room)
         {
@@ -47,6 +50,18 @@ namespace NarrativeProject
                     currentRoom = room;
                     break;
                 }
+            }
+        }
+
+        
+        internal void DecreasePlayerHealth(int amount)
+        {
+            playerHealth -= amount;
+            Console.WriteLine($"Your health is now {playerHealth}.");
+            if (playerHealth <= 0)
+            {
+                Console.WriteLine("You have run out of health. Game over.");
+                Finish(); 
             }
         }
     }
